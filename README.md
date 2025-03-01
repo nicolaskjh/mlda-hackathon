@@ -12,7 +12,7 @@ For future extensions, we will be looking to refine the model to produce more re
 ## Tech Stack
 - React.js - Frontend
 - Flask - Backend
-- Python - Pandas, NumPy, Scikit-Learn to build our AI model
+- Python - Pandas, NumPy, Scikit-Learn and PyTorch to build our AI model
 
 ## Setup Instructions
 

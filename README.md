@@ -16,7 +16,7 @@ We integrated the AI model into a full-stack web application for users to input 
 ### Prerequisites
 Before you begin, ensure you have the following installed:
 
-1. Python 3.8+: Required for the Flask backend. [Download from Pyton Official Website](https://www.python.org/downloads/)
+1. Python 3.8+: Required for the Flask backend. [Download from Python Official Website](https://www.python.org/downloads/)
 
 2. Node.js and npm: Required for the React frontend. [Download from Node.js Official Website](https://nodejs.org/en)
 

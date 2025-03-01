@@ -5,7 +5,7 @@ import { Card } from "./ui/Card";
 import { CardContent } from "./ui/CardContent";
 import { motion } from "framer-motion";
 
-export function Home() {
+export function InputBox() {
   const [inputs, setInputs] = useState({
     bloodPressure: "",
     bmi: "",

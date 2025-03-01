@@ -85,7 +85,7 @@ export function InputBox() {
         setResult("Failed to get prediction. Please try again.");
       } else {
         // Store prediction
-        setResult(response.data.prediction === 1 ? "High Risk" : "Low Risk");
+        setResult(response.data.prediction >= 0.7 ? "High Risk" : response.data.prediction >= 0.4 ? "Medium Risk" : "Low Risk");
       }
     } catch (error) {
       console.error("Error making prediction:", error);

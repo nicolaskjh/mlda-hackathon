@@ -48,7 +48,7 @@ body {
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 32px;
+  padding: 24px;
 }
 
 .text-box h2 {
@@ -70,7 +70,7 @@ body {
   background: white;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 32px;
+  padding: 24px;
 }
 
 .input-card h2 {
@@ -80,25 +80,26 @@ body {
   margin-bottom: 16px;
 }
 
-/* Input Styling */
+/* Input Group with Fixed Error Message Space */
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 32px;
+  position: relative; /* Ensure error messages are positioned relative to the input group */
 }
 
 .input-group label {
   display: block;
   font-size: 14px;
   color: #4b5563; /* Gray for labels */
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   font-weight: 500;
 }
 
 .input {
-  width: 92.5%;
-  padding: 12px;
+  width: 95%;
+  padding: 8px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  font-size: 16px;
+  font-size: 14px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -106,6 +107,22 @@ body {
   border-color: #7c3aed;
   outline: none;
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+}
+
+/* Error Message Styling */
+.error-message {
+  color: #ff0000; /* Bright red color */
+  font-size: 12px; /* Smaller font size */
+  position: absolute; /* Position the error message absolutely */
+  bottom: -32px; /* Place the error message below the input */
+  left: 0; /* Align with the input box */
+  width: 100%; /* Ensure it spans the width of the input */
+  visibility: hidden; /* Hide by default */
+}
+
+/* Show error message when there's an error */
+.input-group.error .error-message {
+  visibility: visible; /* Show the error message */
 }
 
 /* Hide number input arrows */
@@ -154,7 +171,7 @@ input[type="number"] {
 .modal-content {
   background: white;
   border-radius: 16px;
-  padding: 32px;
+  padding: 24px;
   max-width: 400px;
   width: 100%;
   text-align: center;
@@ -164,7 +181,7 @@ input[type="number"] {
 .modal-content h3 {
   font-size: 24px;
   font-weight: 600;
-  color: #7c3aed; /* Purple for modal heading */
+  color: #000000; /* Purple for modal heading */
   margin-bottom: 16px;
 }
 

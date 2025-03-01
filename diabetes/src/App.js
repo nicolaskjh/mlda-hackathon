@@ -7,7 +7,7 @@ export default function App() {
   return (
     <div className="app-container">
       <div className="header">
-        <h1>Diabetes Predictor</h1>
+        <h1>Diabetes Risk Checker</h1>
       </div>
       <div className="main-content">
         <TextBox />

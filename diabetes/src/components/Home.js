@@ -24,43 +24,55 @@ export function Home() {
   };
 
   return (
-    <div className="app-container">
-      <Card className="card">
-        <CardContent>
-          <h2>Diabetes Predictor</h2>
-          <div className="">
+    <div className="input-card">
+      <CardContent>
+        <h2>Enter Your Details</h2>
+        <div className="space-y-4">
+          <div className="input-group">
+            <label>Blood Pressure</label>
             <Input
               type="number"
-              placeholder="Blood Pressure"
+              placeholder="Enter blood pressure"
               name="bloodPressure"
               value={inputs.bloodPressure}
               onChange={handleChange}
             />
+          </div>
+          <div className="input-group">
+            <label>BMI</label>
             <Input
               type="number"
-              placeholder="BMI"
+              placeholder="Enter BMI"
               name="bmi"
               value={inputs.bmi}
               onChange={handleChange}
             />
+          </div>
+          <div className="input-group">
+            <label>Age</label>
             <Input
               type="number"
-              placeholder="Age"
+              placeholder="Enter age"
               name="age"
               value={inputs.age}
               onChange={handleChange}
             />
+          </div>
+          <div className="input-group">
+            <label>Pregnancies</label>
             <Input
               type="number"
-              placeholder="Pregnancies"
+              placeholder="Enter number of pregnancies"
               name="pregnancies"
               value={inputs.pregnancies}
               onChange={handleChange}
             />
-            <Button onClick={handlePredict} className="button">Predict</Button>
           </div>
-        </CardContent>
-      </Card>
+          <Button onClick={handlePredict} className="button">
+            Check Risk
+          </Button>
+        </div>
+      </CardContent>
       {result && (
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -70,8 +82,12 @@ export function Home() {
           <Card className="modal-content">
             <CardContent>
               <h3>Prediction Result</h3>
-              <p>Your risk level: <span className="font-bold">{result}</span></p>
-              <Button onClick={() => setResult(null)} className="button">Close</Button>
+              <p>
+                Your risk level: <span className="font-bold">{result}</span>
+              </p>
+              <Button onClick={() => setResult(null)} className="button">
+                Close
+              </Button>
             </CardContent>
           </Card>
         </motion.div>

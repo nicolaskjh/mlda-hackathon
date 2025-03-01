@@ -4,6 +4,7 @@ import { Input } from "./ui/Input";
 import { Card } from "./ui/Card";
 import { CardContent } from "./ui/CardContent";
 import { motion } from "framer-motion";
+import axios from 'axios';
 
 export function InputBox() {
   const [inputs, setInputs] = useState({
@@ -14,7 +15,6 @@ export function InputBox() {
   });
   const [result, setResult] = useState(null);
   const [errors, setErrors] = useState({}); // To store validation errors
-  const [userInputData, setUserInputData] = useState(null); // To store user input data
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -61,12 +61,12 @@ export function InputBox() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handlePredict = () => {
+  const handlePredict = async () => {
     // Validate inputs before proceeding
     if (!validateInputs()) {
       return; // Stop if validation fails
     }
-
+  
     // Collect user input data
     const userData = {
       bloodPressure: parseFloat(inputs.bloodPressure),
@@ -74,13 +74,23 @@ export function InputBox() {
       age: parseFloat(inputs.age),
       pregnancies: parseFloat(inputs.pregnancies),
     };
-
-    // Store user input data
-    setUserInputData(userData);
-
-    // Placeholder: Normally, you'd send inputs to a backend ML model
-    const randomResult = Math.random() > 0.5 ? "High Risk" : "Low Risk";
-    setResult(randomResult);
+  
+    try {
+      // Send input data to the backend
+      const response = await axios.post('http://127.0.0.1:5000/predict', userData);
+  
+      // Check for errors in the response
+      if (response.data.error) {
+        console.error("Backend error:", response.data.error);
+        setResult("Failed to get prediction. Please try again.");
+      } else {
+        // Store prediction
+        setResult(response.data.prediction === 1 ? "High Risk" : "Low Risk");
+      }
+    } catch (error) {
+      console.error("Error making prediction:", error);
+      setResult(error.message);
+    }
   };
 
   return (
@@ -157,9 +167,13 @@ export function InputBox() {
           <Card className="modal-content">
             <CardContent>
               <h3>Prediction Result</h3>
-              <p>
-                Your risk level: <span className="font-bold">{result}</span>
-              </p>
+              {result === "Failed to get prediction. Please try again." ? (
+                <p className="text-red-500">{result}</p>
+              ) : (
+                <p>
+                  Prediction: <span className="font-bold">{result}</span>
+                </p>
+              )}
               <Button onClick={() => setResult(null)} className="button mt-4">
                 Close
               </Button>

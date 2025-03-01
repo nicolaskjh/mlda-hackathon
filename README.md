@@ -6,6 +6,9 @@ Our solution was to develop an AI model to predict patients who are at risk of d
 
 We integrated the AI model into a full-stack web application for users to input their data, and get a prediction result out of it.
 
+Currently, this product is a minimum viable product meant for testing of the model and its integration into the web app.
+For future extensions, we will be looking to refine the model to produce more reliable results, as well as adding an insights page for patients to derive useful insights based on their risk level, such as potential diet and nutrition changes.
+
 ## Tech Stack
 - React.js - Frontend
 - Flask - Backend
